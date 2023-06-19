@@ -5,7 +5,7 @@ DELETE FROM users;
 DELETE FROM task;
 DELETE FROM sprint;
 DELETE FROM project;
-ALTER SEQUENCE users_id_seq RESTART WITH 1;
+ALTER TABLE users ALTER COLUMN id RESTART WITH 1;
 
 insert into users (EMAIL, PASSWORD, FIRST_NAME, LAST_NAME, DISPLAY_NAME)
 values ('user@gmail.com', '{noop}password', 'userFirstName', 'userLastName', 'userDisplayName'),
@@ -20,7 +20,7 @@ values (0, 1),
        (0, 2);
 
 DELETE FROM reference;
-ALTER SEQUENCE reference_id_seq RESTART WITH 1;
+ALTER TABLE reference ALTER COLUMN id RESTART WITH 1;
 --============ References =================
 insert into reference (CODE, TITLE, REF_TYPE)
 -- TASK
