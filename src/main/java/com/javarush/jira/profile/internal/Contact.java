@@ -15,6 +15,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * id is the same as User.id (not autogenerate)
@@ -60,5 +61,25 @@ public class Contact implements HasId {
         this.id = id;
         this.code = code;
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Contact contact = (Contact) o;
+
+        if (!Objects.equals(id, contact.id)) return false;
+        if (!Objects.equals(code, contact.code)) return false;
+        return Objects.equals(value, contact.value);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (code != null ? code.hashCode() : 0);
+        result = 31 * result + (value != null ? value.hashCode() : 0);
+        return result;
     }
 }
