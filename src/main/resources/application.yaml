@@ -10,6 +10,9 @@ app:
 spring:
   config:
     import: external.properties
+  mvc:
+    hiddenmethod:
+      filter:enabled: true
   jpa:
     show-sql: true
     open-in-view: false
@@ -29,6 +32,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/jira
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    name: datasource
 
   liquibase:
     changeLog: "classpath:db/changelog.sql"
